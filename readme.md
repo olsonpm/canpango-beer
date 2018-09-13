@@ -1,7 +1,11 @@
 ### To start
 
-`npm start`
-visit `http://localhost:8080`
+```sh
+npm install
+npm start
+```
+
+then visit `http://localhost:8080`
 
 ### Walkthrough
 

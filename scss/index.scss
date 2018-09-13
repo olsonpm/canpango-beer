@@ -69,8 +69,12 @@ ul {
   margin-bottom: 0;
 }
 
-button:focus {
-  outline: none;
+button {
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 //
