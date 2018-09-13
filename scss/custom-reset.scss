@@ -1,0 +1,55 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  outline: 0 !important;
+  padding: 0;
+}
+
+//
+// Apparently normalize.scss sets the font-family of these to sans-serif.  Seems
+//   odd given websites would rarely ever use browser-default fonts
+//
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+//
+// border box makes life easier
+// https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+//
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+//
+// normalize.scss seems to set a specific line-height
+//
+// TODO: look into assigning the default line-height in normalize.scss using
+//   scss variables
+//
+button,
+input,
+optgroup,
+select,
+textarea {
+  line-height: $default-line-height;
+}

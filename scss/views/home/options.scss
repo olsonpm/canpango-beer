@@ -1,0 +1,112 @@
+$option-textbox-height: 43px;
+
+.views > .home .options {
+  + h3 {
+    @include res-aware-element-spacing('margin-top', 'xl');
+  }
+
+  form {
+    > * {
+      vertical-align: middle;
+    }
+    button {
+      @include per-screen-size('padding-left', 3, 4, 5, 5, 'px');
+      @include per-screen-size('padding-right', 8, 9, 10, 10, 'px');
+
+      background-color: $yellow;
+      border: 1px solid $yellow;
+      border-top-right-radius: $radius-large;
+      border-bottom-right-radius: $radius-large;
+      height: $option-textbox-height;
+
+      // again, the vertical centering just seems off
+      padding-bottom: 1px;
+
+      box-shadow: 0 0 0 transparent;
+      transition-duration: $duration-tiny;
+      transition-property: box-shadow, border-color;
+      transition-timing-function: $easing-default;
+
+      &:focus {
+        border-color: $brown;
+        box-shadow: 0 0 10px $brown;
+        outline: none;
+      }
+
+      .icon {
+        vertical-align: middle;
+        fill: $bg;
+      }
+
+      .icon.tag > line {
+        stroke: $yellow;
+      }
+    }
+  }
+
+  label {
+    @include res-aware-element-spacing('margin-right', 'md');
+    @include per-screen-size('width', 110, 110, 110, 110, 'px');
+
+    display: inline-block;
+  }
+
+  > li {
+    display: block;
+
+    + li {
+      @include res-aware-element-spacing('margin-top', 'md');
+    }
+
+    > * {
+      vertical-align: middle;
+    }
+  }
+}
+
+.option-textbox {
+  @include for-phones-and-larger {
+    display: inline-block;
+  }
+  @include for-phones-and-smaller {
+    display: flex;
+    padding-top: 6px;
+  }
+
+  > * {
+    vertical-align: middle;
+  }
+
+  > input {
+    @include for-tablets-and-larger {
+      width: 300px;
+    }
+    @include for-phones-and-smaller {
+      flex-grow: 1;
+    }
+
+    @include res-aware-element-spacing(('padding-left', 'padding-right'), 'md');
+
+    //
+    // for some reason the text vertical centering is off (at least in chrome)
+    //   This is the reason for the hardcoded values
+    //
+    @include per-screen-size('padding-top', 4, 5, 5, 6, 'px');
+    @include per-screen-size('padding-bottom', 6, 7, 7, 8, 'px');
+
+    border: 1px solid $fg-light;
+    border-top-left-radius: $radius-large;
+    border-bottom-left-radius: $radius-large;
+    box-shadow: 0 0 0 transparent;
+    height: $option-textbox-height;
+    transition-duration: $duration-tiny;
+    transition-property: box-shadow, border-color;
+    transition-timing-function: $easing-default;
+
+    &:focus {
+      border-color: $yellow;
+      box-shadow: 0 0 10px $yellow;
+      outline: none;
+    }
+  }
+}

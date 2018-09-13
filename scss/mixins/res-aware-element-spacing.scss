@@ -1,0 +1,33 @@
+// prettier-ignore
+@mixin res-aware-element-spacing($prop-list, $size, $unit: px) {
+  $element-spacing-map: (
+    small-phone: (xxs: 3, xs: 6, sm: 12, md: 14, lg: 18, xl: 28, xxl: 60),
+    phone: (xxs: 3, xs: 7, sm: 13, md: 16, lg: 22, xl: 30, xxl: 70),
+    tablet: (xxs: 4, xs: 7, sm: 13, md: 18, lg: 28, xl: 36, xxl: 80),
+    desktop: (xxs: 5, xs: 8, sm: 14, md: 20, lg: 32, xl: 42, xxl: 90)
+  );
+
+  @media (max-width: $small-phone-max) {
+    @each $prop in $prop-list {
+      #{$prop}: map-get(map-get($element-spacing-map, 'small-phone'), $size)#{$unit};
+    }
+  }
+
+  @media (min-width: $phone-min) and (max-width: $phone-max) {
+    @each $prop in $prop-list {
+      #{$prop}: map-get(map-get($element-spacing-map, 'phone'), $size)#{$unit};
+    }
+  }
+
+  @media (min-width: $tablet-min) and (max-width: $tablet-max) {
+    @each $prop in $prop-list {
+      #{$prop}: map-get(map-get($element-spacing-map, 'tablet'), $size)#{$unit};
+    }
+  }
+
+  @media (min-width: $desktop-min) {
+    @each $prop in $prop-list {
+      #{$prop}: map-get(map-get($element-spacing-map, 'desktop'), $size)#{$unit};
+    }
+  }
+}

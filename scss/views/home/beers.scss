@@ -1,0 +1,27 @@
+.category-columns {
+  .beer-list {
+    > li {
+      &:nth-child(odd) > button {
+        border-top: 1px solid $brown;
+      }
+      &:nth-child(even) > button {
+        border-top: 1px solid $yellow;
+      }
+    }
+
+    button {
+      @include res-aware-element-spacing('padding-left', 'md');
+      @include res-aware-element-spacing(
+        ('padding-top', 'padding-bottom'),
+        'sm'
+      );
+
+      text-align: left;
+      width: 100%;
+
+      h5 {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@mixin per-screen-size(
+  $prop-list,
+  $small-phone,
+  $phone,
+  $tablet,
+  $desktop,
+  $unit: null
+) {
+  @media (max-width: $small-phone-max) {
+    @each $prop in $prop-list {
+      #{$prop}: #{$small-phone}#{$unit};
+    }
+  }
+  @media (min-width: $phone-min) and (max-width: $phone-max) {
+    @each $prop in $prop-list {
+      #{$prop}: #{$phone}#{$unit};
+    }
+  }
+  @media (min-width: $tablet-min) and (max-width: $tablet-max) {
+    @each $prop in $prop-list {
+      #{$prop}: #{$tablet}#{$unit};
+    }
+  }
+  @media (min-width: $desktop-min) {
+    @each $prop in $prop-list {
+      #{$prop}: #{$desktop}#{$unit};
+    }
+  }
+}

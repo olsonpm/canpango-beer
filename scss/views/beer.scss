@@ -1,0 +1,167 @@
+.views > .beer {
+  h2,
+  .arrow-left-circle {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  h2 {
+    @include res-aware-element-spacing('margin-left', 'md');
+    margin-bottom: 0;
+
+    // something about the vertical align doesn't seem to be off
+    padding-bottom: 1px;
+  }
+
+  .arrow-left-circle {
+    height: 50px;
+    stroke: $bg;
+    stroke-width: 2.5px;
+
+    > circle {
+      fill: $yellow;
+    }
+  }
+
+  @include for-tablets-and-larger {
+    label {
+      // 'align-items: center' doesn't seem to be quite right
+      padding-bottom: 2px;
+    }
+    form > .fields {
+      @include res-aware-element-spacing('margin-top', 'lg');
+      @include res-aware-element-spacing('row-gap', 'sm');
+      @include res-aware-element-spacing('column-gap', 'lg');
+
+      align-items: center;
+      display: grid;
+      font-size: 20px;
+      grid-template-columns: auto 1fr;
+    }
+  }
+
+  @include for-phones-and-smaller {
+    label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 6px;
+    }
+    input {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  dl {
+    @include res-aware-element-spacing('margin-top', 'lg');
+    @include res-aware-element-spacing('row-gap', 'sm');
+    @include res-aware-element-spacing('column-gap', 'lg');
+
+    align-items: center;
+    display: grid;
+    font-size: 20px;
+    grid-template-columns: auto 1fr;
+  }
+
+  label,
+  dt {
+    font-weight: bold;
+  }
+
+  input,
+  dd {
+    margin-left: 0;
+  }
+
+  input {
+    @include res-aware-element-spacing(('padding-top', 'padding-bottom'), 'xs');
+  }
+
+  input:not(:disabled) {
+    @include res-aware-element-spacing(('padding-left', 'padding-right'), 'sm');
+
+    border: 1px solid $fg-light;
+    border-radius: $radius-small;
+    box-shadow: 0 0 0 transparent;
+    max-width: 400px;
+    transition-duration: $duration-tiny;
+    transition-property: box-shadow, border-color;
+    transition-timing-function: $easing-default;
+
+    &:focus {
+      border-color: $yellow;
+      box-shadow: 0 0 10px $yellow;
+      outline: none;
+    }
+  }
+
+  input:disabled {
+    background-color: $bg;
+    border: none;
+    color: $fg;
+    outline: none;
+  }
+
+  .icon.check-circle,
+  button.submit,
+  button.delete {
+    @include res-aware-element-spacing('margin-top', 'lg');
+
+    vertical-align: middle;
+  }
+
+  .icon.check-circle {
+    @include res-aware-element-spacing('margin-left', 'md');
+
+    color: $brown;
+    display: inline-block;
+    width: 40px;
+    opacity: 0;
+  }
+
+  button.submit {
+    background-color: $orange;
+    border: 1px solid $orange;
+    display: inline-block;
+
+    &:focus {
+      border-color: $brown;
+      box-shadow: 0 0 10px $brown;
+    }
+  }
+
+  button.delete {
+    background-color: $red;
+    border: 1px solid $red;
+    display: block;
+
+    &:focus {
+      border-color: $bg;
+      box-shadow: 0 0 10px $red;
+    }
+  }
+
+  button.submit,
+  button.delete {
+    @include res-aware-element-spacing(('padding-left', 'padding-right'), 'lg');
+    @include res-aware-element-spacing(('padding-top', 'padding-bottom'), 'sm');
+
+    border-radius: 999px;
+    color: $bg;
+    font-weight: bold;
+    font-size: 22px;
+    transition-duration: $duration-tiny;
+    transition-property: box-shadow, border-color;
+    transition-timing-function: $easing-default;
+
+    > span {
+      // again, the centering seems off by one
+      display: inline-block;
+      padding-bottom: 1px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

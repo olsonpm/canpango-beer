@@ -1,0 +1,53 @@
+.for-desktops {
+  @include for-tablets-and-smaller {
+    display: none !important;
+  }
+}
+
+.for-tablets {
+  @include for-phones-and-smaller {
+    display: none !important;
+  }
+  @include for-desktops {
+    display: none !important;
+  }
+}
+
+.for-tablets-and-larger {
+  @include for-phones-and-smaller {
+    display: none !important;
+  }
+}
+
+.for-tablets-and-smaller {
+  @include for-desktops {
+    display: none !important;
+  }
+}
+
+.for-phones {
+  @include for-small-phones {
+    display: none !important;
+  }
+  @include for-tablets-and-larger {
+    display: none !important;
+  }
+}
+
+.for-phones-and-larger {
+  @include for-small-phones {
+    display: none !important;
+  }
+}
+
+.for-phones-and-smaller {
+  @include for-tablets-and-larger {
+    display: none !important;
+  }
+}
+
+.for-small-phones {
+  @include for-phones-and-larger {
+    display: none !important;
+  }
+}

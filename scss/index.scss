@@ -1,0 +1,126 @@
+@import '~normalize-scss/sass/_normalize';
+@include normalize();
+
+@import './fonts';
+@import './custom-reset';
+@import './display-for-screen-sizes';
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Playfair Display', serif;
+}
+
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+h1 {
+  @include per-screen-size('font-size', 40, 40, 46, 46, 'px');
+  @include res-aware-element-spacing('margin-top', 'lg');
+  @include res-aware-element-spacing('margin-bottom', 'xl');
+}
+
+h3 {
+  @include per-screen-size('font-size', 26, 26, 28, 28, 'px');
+}
+
+h4 {
+  @include per-screen-size('font-size', 18, 18, 20, 20, 'px');
+}
+
+h5 {
+  @include per-screen-size('font-size', 17, 18, 18, 18, 'px');
+}
+
+body {
+  @include for-small-phones {
+    font-size: 18px;
+  }
+  @include for-phones-and-larger {
+    font-size: 19px;
+  }
+
+  color: $fg;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.content-container {
+  @include res-aware-element-spacing(('padding-left', 'padding-right'), 'lg');
+  @include for-phones {
+    max-width: $phone-min;
+  }
+
+  margin: 0 auto;
+  max-width: $site-width;
+  width: 100%;
+
+  // this is just a hack for now to prevent shadows from getting chopped off
+  padding-bottom: 6px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+button:focus {
+  outline: none;
+}
+
+//
+// the flex nonsense is a css-only solution to get a darn sticky footer
+//
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  > main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    > .views {
+      flex-grow: 1;
+      overflow: hidden;
+      white-space: nowrap;
+
+      > li {
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+      }
+    }
+  }
+}
+
+footer {
+  @include res-aware-element-spacing('margin-top', 'xl');
+
+  background-color: $brown;
+  height: 10px;
+  width: 100%;
+}
+
+.react-switch {
+  vertical-align: middle;
+}
+
+.react-switch-handle {
+  border: 1px solid transparent !important;
+  box-shadow: 0 1px 8px 1px $shadow-gray-default !important;
+  transition-duration: $duration-tiny;
+  transition-property: box-shadow, border-color;
+  transition-timing-function: $easing-default;
+
+  &:focus {
+    // border-color: $yellow !important;
+    box-shadow: 0 1px 8px 1px $yellow !important;
+  }
+}

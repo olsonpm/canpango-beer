@@ -1,0 +1,130 @@
+.category-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  > li {
+    @include for-desktops {
+      width: 30%;
+    }
+    @include for-tablets {
+      width: 47%;
+    }
+    @include for-phones-and-smaller {
+      width: 100%;
+    }
+  }
+
+  .category {
+    @include shadow-small($with-focus: true, $focus-color: $brown);
+
+    overflow: hidden;
+    transition-duration: $duration-tiny;
+    transition-property: box-shadow;
+    transition-timing-function: $easing-default;
+
+    &.expanded .chevron-down {
+      transform: rotate(180deg);
+    }
+    &:not(.expanded):not(.animating) {
+      .beer-list,
+      button.category-control {
+        display: none !important;
+      }
+    }
+    &.can-edit > button.category-control {
+      @include res-aware-element-spacing('padding-left', 'md');
+
+      align-items: center;
+      border-top-width: 1px;
+      border-top-style: solid;
+      display: flex;
+      text-align: left;
+      width: 100%;
+
+      span {
+        flex-grow: 1;
+      }
+
+      .wrapper {
+        @include per-screen-size(
+          ('padding-left', 'padding-right'),
+          10,
+          10,
+          10,
+          10,
+          'px'
+        );
+        display: flex;
+        padding-bottom: 1px;
+
+        // 49 is the computed height of the expander portion.  It should
+        //   probably be set explicitly everywhere and held in a variable.
+        height: 49px;
+      }
+
+      .icon {
+        align-self: center;
+        fill: $bg;
+        width: 30px;
+      }
+
+      &.add-beer {
+        border-top-color: $yellow;
+
+        > .wrapper {
+          background-color: $yellow;
+        }
+      }
+
+      &.delete-category {
+        border-top-color: $brown;
+
+        .icon.trash {
+          stroke: $bg;
+
+          > line {
+            stroke: $red;
+            stroke-width: 1.8px;
+          }
+        }
+
+        > .wrapper {
+          background-color: $red;
+        }
+      }
+    }
+    &:not(.can-edit) > .category-control {
+      display: none;
+    }
+
+    + .category {
+      @include res-aware-element-spacing('margin-top', 'md');
+    }
+
+    > button.expand {
+      @include res-aware-element-spacing(
+        ('padding-top', 'padding-bottom'),
+        'sm'
+      );
+      @include res-aware-element-spacing(
+        ('padding-left', 'padding-right'),
+        'md'
+      );
+
+      align-content: center;
+      display: flex;
+      text-align: left;
+      width: 100%;
+
+      .chevron-down {
+        transition: transform $duration-short $easing-default;
+      }
+
+      h4 {
+        flex-grow: 1;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
